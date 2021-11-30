@@ -25,12 +25,17 @@ public class TaskController {
         if (!taskVO.isParamAvailable()) {
             return ResponseEntity.badRequest().build();
         }
-        BackgroundThreadPoolExecutor.registerScheduleTask(new DelayRunnable(taskVO.getName()) {
+        BackgroundThreadPoolExecutor.getInstance().registerScheduleTask(new DelayRunnable(taskVO.getName()) {
             @Override
             public void run() {
                 System.out.println(taskVO.getContent());
             }
         }, 1, TimeUnit.SECONDS);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("stop")
+    public void stop() {
+        BackgroundThreadPoolExecutor.getInstance().stopTrack();
     }
 }
