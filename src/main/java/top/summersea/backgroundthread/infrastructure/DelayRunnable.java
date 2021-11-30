@@ -5,8 +5,12 @@ import java.util.Objects;
 public abstract class DelayRunnable implements Runnable {
 
     /** 任务标识 */
-    private String identifier;
+    private final String identifier;
 
+    /**
+     * 构造器
+     * @param identifier 任务标识
+     */
     public DelayRunnable(String identifier) {
         this.identifier = identifier;
     }
