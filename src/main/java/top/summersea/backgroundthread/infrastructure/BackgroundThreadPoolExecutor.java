@@ -46,6 +46,7 @@ public class BackgroundThreadPoolExecutor {
 
     /**
      * 注册一次性延时任务
+     * 如果任务已被注册，会替换掉之前注册的任务，即使之前的任务还未执行。
      * @param runnable 任务
      * @param delay    延时时间
      * @param timeUnit 延时时间单位
